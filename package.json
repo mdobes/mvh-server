@@ -1,0 +1,18 @@
+{
+  "name": "mvh-server",
+  "version": "0.0.1",
+  "description": "Parser a REST API pro mimořádné události z webu Českých Drah ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michal Dobeš (michalldbs@seznam.cz)",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "cheerio": "^1.0.0-rc.10",
+    "moment": "^2.29.1",
+    "momentjs": "^2.0.0",
+    "mysql2": "^2.3.3-rc.0"
+  }
+}
