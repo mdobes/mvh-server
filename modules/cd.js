@@ -2,6 +2,7 @@ const axios = require("axios")
 const cheerio = require("cheerio")
 const moment = require("moment");
 const discord = require("./discord")
+const connection = require("./mysql");
 
 String.prototype.clearText = function () {
 	return this.replace(/[\n\t\r]/g,"").trim();
@@ -31,8 +32,10 @@ const fetchHTML = async (url) => {
 	return cheerio.load(data)
 }
 
-const eventExist = async (type, id) => {
-
+module.exports.eventExist = async (type, id) => {
+	let result = await connection.query('SELECT cdId FROM cztrains_restrictions WHERE cdId = ?', [id]);
+	if(result[0][0]) return true;
+	else return false;
 }
   
 module.exports.fetchDetail = async (type, id) => {

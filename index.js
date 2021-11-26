@@ -1,5 +1,5 @@
 const config = require("./config.json");
-const discord = require("./modules/discord");
+const cd = require("./modules/cd");
 const connection = require("./modules/mysql");
 
 
