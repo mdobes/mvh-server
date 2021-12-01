@@ -1,0 +1,13 @@
+{
+    "discordWebhook": {
+        "enabled": true,
+        "url": ""
+    },
+    "database": {
+        "host": "",
+        "port": "",
+        "database": "",
+        "user": "",
+        "password": ""
+    }
+}
