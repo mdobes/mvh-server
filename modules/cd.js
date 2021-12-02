@@ -1,7 +1,6 @@
 const axios = require("axios")
 const cheerio = require("cheerio")
 const moment = require("moment");
-const discord = require("./discord")
 const connection = require("./mysql");
 
 String.prototype.clearText = function () {
@@ -34,9 +33,14 @@ const fetchHTML = async (url) => {
 }
 
 module.exports.eventExist = async (type, id) => {
-	let result = await connection.query('SELECT cdId FROM cztrains_restrictions WHERE cdId = ?', [id]);
-	if(result[0][0]) return true;
-	else return false;
+	try {
+		let result = await connection.query('SELECT cdId FROM cztrains_restrictions WHERE cdId = ?', [id]);
+		if(result[0][0]) return true;
+		else return false;
+	}catch (e){
+		throw Error(`Something went wrong while fetching event details. (Type: ${type}, id: ${id})`);
+	}
+
 }
   
 module.exports.fetchDetail = async (type, id) => {
@@ -64,7 +68,7 @@ module.exports.fetchDetail = async (type, id) => {
 		array.comment = comment;
 		return array;
 	}catch (e){
-		throw Error(e);
+		throw Error(`Something went wrong while fetching event details. (Type: ${type}, id: ${id})`);
 	}
 }
 
@@ -83,7 +87,7 @@ module.exports.fetchAllEvents = async () => {
 
 		if (await this.eventExist(null, array.cdId)) continue;
 		if (array.cdType == "zahranicni-vyluka" || array.cdType == "zahranicni-mimoradnost") continue;
-		
+
 		let track = $(e).find("h3[class=title] > span").text().replace(/úsek/g, "").split("Trať ").filter(value => Object.keys(value).length !== 0);
 		track.forEach((e, i) => {
 			let section = e.split(":");

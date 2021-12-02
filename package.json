@@ -1,10 +1,11 @@
 {
   "name": "mvh-parser",
-  "version": "0.0.1",
+  "version": "1.0-beta",
   "description": "Parser a REST API pro mimořádné události z webu Českých drah",
   "main": "index.js",
   "scripts": {
-    "test": "node ."
+    "start": "node .",
+    "auto-install": "npm install pm2 -g && pm2 start index.js --name mvh-server"
   },
   "type": "commonjs",
   "author": "Michal Dobeš (michalldbs@seznam.cz)",

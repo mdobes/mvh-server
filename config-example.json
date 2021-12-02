@@ -1,4 +1,8 @@
 {
+    "cron": {
+        "time": "*/5 * * * *",
+        "timezone": "Europe/Prague"
+    },
     "discordWebhook": {
         "enabled": true,
         "url": ""
