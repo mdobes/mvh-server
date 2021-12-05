@@ -12,6 +12,9 @@
         "port": "",
         "database": "",
         "user": "",
-        "password": ""
+        "password": "",
+        "tables": {
+            "events": "events"
+        }
     }
 }

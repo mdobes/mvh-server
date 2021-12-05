@@ -9,7 +9,7 @@ const job = new CronJob(config.cron.time, async () => {
     result.forEach(async (item) => {
         try {
             await connection.query(
-                "INSERT INTO cztrains_restrictions (cdId, type, trackInfo, creationDate, expectedEnd, reason, trains," +
+                "INSERT INTO "+ config.database.tables.events +" (cdId, type, trackInfo, creationDate, expectedEnd, reason, trains," +
                 "comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [item.cdId, item.type, JSON.stringify(item.trackInfo), item.creationDate, 
                 item.expectedEnd, JSON.stringify(item.reason), JSON.stringify(item.trains), item.comment]);
             await dc.discordNotify(item);
