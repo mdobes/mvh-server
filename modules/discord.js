@@ -37,7 +37,7 @@ module.exports.discordNotify = async(data) => {
                     "**Důvody události:**\n" + 
                     data.reason.join("\n") +
                     `\n\n[MimoViewHistory](https://mvh.dobes.pw/#${data.cdId}) • ` +
-                    `[České Dráhy](https://www.cd.cz/jizdni-rad/omezeni-provozu/${data.cdType}/${data.cdId}]/)`,
+                    `[České Dráhy](https://www.cd.cz/jizdni-rad/omezeni-provozu/${data.cdType}/${data.cdId}/)`,
                 "color": color
             }
         ]

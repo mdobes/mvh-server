@@ -94,13 +94,15 @@ module.exports.fetchAllEvents = async () => {
 			track[i] = { [section[0].trim()]: section[1].trim() };
 		});
 
+		$(e).find("span[class=desc]").children(".text.title").remove();
 		let time = $(e).find("span[class=desc]").html();
+		
 		array.trackInfo = track;
 		array.time = time;
 
 		if (array.cdType === "vyluka") {
 			array.type = "exclusion";
-			array.time = array.time.arrReplace(["Výluka, ", "počátek od ", " Plánovaný konec: ", "\r\n Neplánovaná výluka"], [""]);
+			array.time = array.time.arrReplace(["<br>", "Výluka, ", "počátek od ", " Plánovaný konec: ", "\r\n Neplánovaná výluka"], [""]);
 			array.time = array.time.split("/");
 		} else if (array.cdType === "mimoradnost") {
 			array.type = "extraordinary";
@@ -108,6 +110,7 @@ module.exports.fetchAllEvents = async () => {
 			array.time = array.time.split("<br>");
 			array.time = array.time[1].split("/");
 		}
+
 		array.time = array.time.trimArray();
 		array.creationDate = moment(array.time[0], "DD.MM.YYYY HH:mm", true).format("YYYY-MM-DD HH:mm:ss");
 		array.expectedEnd = moment(array.time[1], "DD.MM.YYYY HH:mm", true).format("YYYY-MM-DD HH:mm:ss");
@@ -116,7 +119,6 @@ module.exports.fetchAllEvents = async () => {
 		let mergedArray = { ...array, ...info };
 
 		retArray.push(mergedArray);
-
     }
 
 	return retArray;
