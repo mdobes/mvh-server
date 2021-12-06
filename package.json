@@ -1,6 +1,6 @@
 {
   "name": "mvh-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parser a REST API pro mimořádné události z webu Českých drah",
   "main": "index.js",
   "scripts": {

@@ -11,7 +11,8 @@ String.prototype.commentReplace = function () {
 	return this.replace('<h4 style="font-size: 16px;"><strong>Popis:</strong></h4>', '<span class="title-muted">Popis</span>')
 			.replace('<h3 class="h4faq">Obecné opatření v dálkové dopravě</h3>', '<span class="title-muted">Obecné opatření v dálkové dopravě</span>')
 			.replace('<h3 class="h4faq mt50">Obecné opatření v regionální dopravě</h3>', '<span class="title-muted">Obecné opatření v regionální dopravě</span>')
-			.replace('<h3 class="h4faq mt50">Poznámka</h3>', '<span class="title-muted">Poznámka</span>');
+			.replace('<h3 class="h4faq mt50">Poznámka</h3>', '<span class="title-muted">Poznámka</span>')
+			.replace('<h3 class="h4faq mt50">Soubory ke stažení</h3>', '');
 };
 
 String.prototype.arrReplace = function(find, replace) {
@@ -64,10 +65,12 @@ module.exports.fetchDetail = async (type, id) => {
 		$(".h4faq:contains('Odkazy na podrobnosti')").remove();
 		$(".blink.block").remove();
 		$(".reset").remove();
+		$(".bdown.vd2").remove();
 		let comment = $("div[class='traficRestrictions']").html().clearText().replace(/\>[\t ]+\</g, "><").commentReplace();
 		array.comment = comment;
 		return array;
 	}catch (e){
+		console.log(e);
 		throw Error(`Something went wrong while fetching event details. (Type: ${type}, id: ${id})`);
 	}
 }
