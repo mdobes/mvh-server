@@ -18,9 +18,9 @@ module.exports.discordNotify = async(data) => {
     });
 
     let color, type
-
-    if (data.cdType === "mimoradnost") color = 14431557, type = "Mimořádnost";
-    else if (data.cdType === "vyluka") color = 1548984, type = "Výluka";
+    
+    if (data.cdType === "mimoradnost") color = config.discordWebhook.colors.extraordinary, type = "Mimořádnost";
+    else if (data.cdType === "vyluka") color = config.discordWebhook.colors.exclusion, type = "Výluka";
 
     const json = {
         "content": null,

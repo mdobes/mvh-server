@@ -5,7 +5,11 @@
     },
     "discordWebhook": {
         "enabled": true,
-        "url": ""
+        "url": "",
+        "colors": {
+            "extraordinary": 14431557,
+            "exclusion": 1548984
+        }
     },
     "database": {
         "host": "",

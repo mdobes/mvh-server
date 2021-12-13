@@ -1,7 +1,7 @@
 {
   "name": "mvh-parser",
   "version": "1.0.1",
-  "description": "Parser a REST API pro mimořádné události z webu Českých drah",
+  "description": "Parser for exclusions and extraordinaries from Ceske drahy website",
   "main": "index.js",
   "scripts": {
     "start": "node .",
@@ -10,6 +10,13 @@
   "type": "commonjs",
   "author": "Michal Dobeš (michalldbs@seznam.cz)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdobes/mvh-server"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "dependencies": {
     "axios": "^0.23.0",
     "cheerio": "^1.0.0-rc.10",
