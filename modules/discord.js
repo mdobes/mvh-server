@@ -50,6 +50,7 @@ module.exports.discordNotify = async(data) => {
         } 
         else return false
     }catch (e){
+        if (config.devMode === true) console.log(e);
         throw new Error ("Something went wrong while sending an Discord Webhook message.")
     }
 

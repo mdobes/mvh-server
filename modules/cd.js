@@ -39,6 +39,7 @@ module.exports.eventExist = async (type, id) => {
 		if(result[0][0]) return true;
 		else return false;
 	}catch (e){
+		if (config.devMode === true) console.log(e);
 		throw Error(`Something went wrong while fetching event details. (Type: ${type}, id: ${id})`);
 	}
 
@@ -70,7 +71,7 @@ module.exports.fetchDetail = async (type, id) => {
 		array.comment = comment;
 		return array;
 	}catch (e){
-		console.log(e);
+		if (config.devMode === true) console.log(e);
 		throw Error(`Something went wrong while fetching event details. (Type: ${type}, id: ${id})`);
 	}
 }

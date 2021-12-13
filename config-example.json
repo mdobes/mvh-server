@@ -20,5 +20,6 @@
         "tables": {
             "events": "events"
         }
-    }
+    },
+    "devMode": false
 }

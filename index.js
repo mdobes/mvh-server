@@ -14,7 +14,8 @@ const job = new CronJob(config.cron.time, async () => {
                 item.expectedEnd, JSON.stringify(item.reason), JSON.stringify(item.trains), item.comment]);
             await dc.discordNotify(item);
         }catch(e){
-            console.log(e);
+            if (config.devMode === true) console.log(e);
+            throw new Error("A error occured while inserting record to database.");
         }
 
     })
